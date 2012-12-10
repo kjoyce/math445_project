@@ -80,6 +80,10 @@ for i=2:nsimu % simulation loop
     chain(i,:) = oldpar;              % reject
     rej        = rej+1;  
   end
+  if (mod(i,10) == 0)
+      fmt = 'MCMC run %i\n';
+      fprintf(fmt,i);
+  end
   if (i > 100)
     qcov = cov(chain);
     R = chol(qcov);
