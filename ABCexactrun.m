@@ -10,7 +10,7 @@ for (i=1:10)
     data.y0 = [the_mice(i).init 0];
     
     % calling fminsearch via some magic from MCMC
-    theta0=[.2 25];
+    theta0=[1 1];
     [thopts(i,:),ssopt]=fminsearch(@ABCexactss,theta0,[],data);
     
     % visualization: solve model with thopt and compare to data

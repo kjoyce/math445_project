@@ -1,5 +1,8 @@
 function ss = ABCsumss(theta,mice)
 ss=0;
+ t = linspace(0,10);
+ plot(t,ABCmodel(t,theta,[mice(1).init 0]),mice(1).xdata,mice(1).ydata,'ko');
+ drawnow;
 for i=1:length(mice)
     data.time = mice(i).xdata;
     data.ydata = mice(i).ydata';
