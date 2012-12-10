@@ -16,7 +16,7 @@ load mice_data_struct;
 figure();
 hold on;
 thopts = zeros(10,2);
-the_mice = mice.b;
+the_mice = mice.a;
 for (i=1:10)
     data.time = the_mice(i).xdata;
     data.ydata = the_mice(i).ydata';
@@ -45,8 +45,9 @@ oldpar = mean(thopts);
 %%%%%%%%%%%%%%%%%%%
 ss = ABCsumss(oldpar,the_mice)
 nobs = 40;
-npar = 2;                            %  n of parameters,th1 ja th2
+npar = 2;                         %  n of parameters,th1 ja th2
 sigma2 = ss/(nobs-npar);          %  variance of meas.error
+
 
 %As for choice of the proposal, try the following:
 
