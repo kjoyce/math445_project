@@ -32,6 +32,7 @@ for i=1:10
     %legend('Xa compartment','X Compartment');
     % hold off;
 end
+
 ss = ssopt;
 oldpar = thopt;
 nobs = 40;
@@ -41,7 +42,7 @@ sigma2 = ss/(nobs-npar);          %  variance of meas.error
 %As for choice of the proposal, try the following:
 
 %the 'initial guess' for the proposal:
-qcov   = 1e-4*eye(npar);              %  covariance for Gaussian proposal
+%qcov   = 1e-4*eye(npar);              %  covariance for Gaussian proposal
 %qcov = cov(chain);
 
 %... but when one (or more) run has been done, comment the above and try
@@ -69,7 +70,8 @@ for i=2:nsimu % simulation loop
       fmt = 'MCMC run %i\n';
       fprintf(fmt,i);
   end
-  if (i > 100)
+  %if (i > 100) 
+  if( mod(i,50) == 0 ) %speeds up the MCMC
     qcov = cov(chain);
     R = chol(qcov);
   end
@@ -86,5 +88,7 @@ subplot(3,1,2);plot(1:nsimu,chain(:,2)); title('CHAIN for K');
 subplot(3,1,3);plot(1:nsimu,chain(:,3)); title('CHAIN for F/V');
 
 
-figure(); plot(chain(:,1),chain(:,2),'.');
-%title('SAMPLED PARAMETER POSTERIOR DISTRIBUTION');
+figure(); 
+subplot(2,2,1);plot(chain(:,1),chain(:,2),'.'); title('ka vs K');
+subplot(2,2,2);plot(chain(:,1),chain(:,3),'.'); title('ka vs F/V');
+subplot(2,2,3);plot(chain(:,2),chain(:,3),'.'); title('K vs F/V');
