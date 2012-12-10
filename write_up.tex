@@ -1,0 +1,40 @@
+\documentclass{homework}
+
+\usepackage{tikz}
+\usepackage{framed}
+\usepackage{hyperref}
+\usepackage[numbered,framed]{mcode}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\course{Modeling - Math 445}
+\docdate{\today}
+
+\newcommand{\iidist}{\stackrel{iid}{\sim}}
+\newcommand{\mse}{\ensuremath{\text{MSE}}}
+\newcommand{\sse}{\ensuremath{\text{SSE}}}
+
+\begin{document}
+We model the absorbtion via the following compartment model.
+
+\tikzset{
+  compartment/.style={
+    rectangle, 
+    minimum size=15mm, 
+    thick, 
+    draw=black!50
+  }
+}
+\usetikzlibrary{positioning}
+\begin{tikzpicture} [node distance=10mm and 20mm,
+		    ]
+\node (Xa) [compartment]	     {$X_a$};
+\node (X)  [compartment,right=of Xa] {$X$};
+\path (Xa) edge[-latex] (X) edge +(20mm,0);
+
+\node (Ya) [compartment,below=of Xa] {$Y_a$};
+\node (Y)  [compartment,below=of X]  {$Y$};
+		
+\end{tikzpicture}
+\end{document}
+
