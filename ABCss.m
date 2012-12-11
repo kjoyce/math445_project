@@ -1,11 +1,17 @@
-function ss=ABCss(theta,data)
+function ss=ABCss(theta,mouse,varargin)
 
-time=[0 data.time];  % adding zero to time vector!
-ydata=data.ydata;
-y0=data.y0;
+time=[0 mouse.xdata];  % adding zero to time vector!
+ydata=mouse.ydata;
+y0=mouse.init;
 
-ymod1=ABCmodel(time,theta,y0);
+if (length(varargin{:})>1) ...
+&& strcmp('use_ode_solution',varargin{1}{1})...
+&& (varargin{1}{2} == 1)
+    ymod=ABCexact(time,theta,y0);    
+else
+    ymod=ABCmodel(time,theta,y0);
+end
 
-ymod=theta(3)*ymod1(2:end,2);  % taking A and B, removing initial value
+ymod=theta(3)*ymod(2:end,2);     % Fit only the X (blood) data points
 
-ss=sum(sum((ydata-ymod).^2));   % the total SS
+ss=sum(sum((ydata-ymod').^2));   % the total SS
