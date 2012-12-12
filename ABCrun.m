@@ -91,7 +91,7 @@ for i=start_chain:start_chain+nsimu % simulation loop
   end
   if (i > 100) 
   %if( mod(i,50) == 0 ) % Less adapting, speeds up when chain is superlong
-    qcov = cov(chain);
+    qcov = cov(chain(1:i,:);
     R = chol(qcov);
   end
 end
