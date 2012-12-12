@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  11 DEC 2012 20:23
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  12 DEC 2012 08:09
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -903,7 +903,7 @@ PDF version <1.5>, but at most version <1.4> allowed
 File: group_a_plotmatrix.pdf Graphic file (type pdf)
 
 <use group_a_plotmatrix.pdf>
-Overfull \vbox (0.80893pt too high) detected at line 217
+Overfull \vbox (0.80893pt too high) detected at line 218
  []
 
 [22
@@ -916,7 +916,7 @@ PDF version <1.5>, but at most version <1.4> allowed
 File: group_b_plotmatrix.pdf Graphic file (type pdf)
 
 <use group_b_plotmatrix.pdf>
-Overfull \vbox (10.44807pt too high) detected at line 221
+Overfull \vbox (10.44807pt too high) detected at line 222
  []
 
 [23
@@ -928,7 +928,7 @@ ion <1.5>, but at most version <1.4> allowed
 <all_fitted.pdf, id=304, 383.47263pt x 303.65443pt>
 File: all_fitted.pdf Graphic file (type pdf)
  <use all_fitted.pdf>
-Overfull \vbox (11.28023pt too high) detected at line 225
+Overfull \vbox (11.28023pt too high) detected at line 226
  []
 
 [24
@@ -971,7 +971,7 @@ ersion <1.5>, but at most version <1.4> allowed
 <drug_abs_diff.pdf, id=877, 376.9583pt x 299.87032pt>
 File: drug_abs_diff.pdf Graphic file (type pdf)
  <use drug_abs_diff.pdf>
-Overfull \hbox (8.6078pt too wide) in paragraph at lines 255--255
+Overfull \hbox (8.6078pt too wide) in paragraph at lines 256--256
 \OT1/cmss/m/n/10.95 Interval:$\OT1/cmr/m/n/10.95 [\OMS/cmsy/m/n/10.95 ^^@\OT1/c
 mr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 1187\OML/cmm/m/it/10.95 ;
   \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 0353]$\OT1/cmss/m
@@ -983,7 +983,7 @@ mr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 1187\OML/cmm/m/it/10.95 ;
  <./drug_abs_diff.pdf>]
 File: drug_abs_diff.pdf Graphic file (type pdf)
  <use drug_abs_diff.pdf>
-Overfull \hbox (8.6078pt too wide) in paragraph at lines 255--255
+Overfull \hbox (8.6078pt too wide) in paragraph at lines 256--256
 \OT1/cmss/m/n/10.95 Interval:$\OT1/cmr/m/n/10.95 [\OMS/cmsy/m/n/10.95 ^^@\OT1/c
 mr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 1187\OML/cmm/m/it/10.95 ;
   \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 0353]$\OT1/cmss/m
@@ -1025,7 +1025,7 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  16939 strings out of 495061
  322372 string characters out of 1182621
- 389028 words of memory out of 3000000
+ 389027 words of memory out of 3000000
  19601 multiletter control sequences out of 15000+50000
  11137 words of font info for 43 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
@@ -1043,7 +1043,7 @@ ype1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/
 amsfonts/cm/cmtt8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/sym
 bols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/m
 sbm10.pfb>
-Output written on m445talk.pdf (30 pages, 888603 bytes).
+Output written on m445talk.pdf (30 pages, 889628 bytes).
 PDF statistics:
  993 PDF objects out of 1000 (max. 8388607)
  65 named destinations out of 1000 (max. 500000)

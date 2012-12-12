@@ -13,11 +13,25 @@
 %%%%%%%%%%%% CHANGE THESE PARAMETERS %%%%%%%%%%%%%%%%
 load mice_data_struct;
 nsimu = 15000;
-the_mice = mice.a;
-%the_mice = mice.b;
-chain_file_name = 'mice_a_1-15000_exact-sol.mat';
-%chain_file_name = 'mice_b_1-15000_exact-sol-2.mat';
+mice_group = 'a';
+%mice_group = 'b';
 first_run = 1;  % change to 0 if you are continuing from previous MCMC
+%%% If first_run = 0, then define the chain_file_name 
+% mice_a_15000-20000_exact-sol.mat
+% You probably won't ever have to do this since the chain calculation is blazing fast now.
+if strcmp(mice_group,'a')
+  the_mice = mice.a;
+  chain_file_name = ['mice_a_1-',num2str(nsimu),'_exact-sol.mat'];
+  fig_save_prefix = 'mice_a_';
+  plot_label = 'Mice A'
+elseif strcmp(mice_group,'b')
+  the_mice = mice.b;
+  chain_file_name = ['mice_b_1-',num2str(nsimu),'_exact-sol.mat'];
+  fig_save_prefix = 'mice_b_';
+  plot_label = 'Mice B'
+else
+  error('Bad Mice Choice');
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 if (first_run)
@@ -28,6 +42,8 @@ if (first_run)
   % visualization: solve model with thopt and compare to data
   t=linspace(0,10);
   figure(1);
+  set(gcf,'PaperSize',[5,4]);
+  set(gcf,'PaperPosition',[0,0,5,4]);
   hold on;
   for i=1:10
       ymod=ABCmodel(t,thopt,the_mice(i).init);
@@ -41,6 +57,8 @@ if (first_run)
   hold off;
 
   figure(5);
+  set(gcf,'PaperSize',[5,4]);
+  set(gcf,'PaperPosition',[0,0,5,4]);
   idx = randperm(10); % plot nine random mice
   for i=1:9
       ymod=ABCmodel(t,thopt,the_mice(idx(i)).init);
@@ -52,6 +70,7 @@ if (first_run)
       hold off;
       xlabel('time'); ylabel('Drug Concentration');
   end
+  print(gcf,'-dpdf',[fig_save_prefix 'fits.pdf']) 
 end    
 nobs = 40;
 npar = 3;                         %  n of parameters,th1 ja th2
@@ -102,17 +121,28 @@ accept = 1-rej./nsimu;                  % acceptance rate
 
 %%%%some plots: 
 figure(3)
+set(gcf,'PaperSize',[5,4]);
+set(gcf,'PaperPosition',[0,0,5,4]);
 start_chain = 1;
 chlen = length(chain);
 subplot(3,1,1);plot(start_chain:chlen,chain(start_chain:end,1)); title('CHAIN for ka'); xlim([0,chlen]);
-subplot(3,1,2);plot(start_chain:chlen,chain(start_chain:end,2)); title('CHAIN for K'); xlim([0,chlen]); % ylim([.48,.58]);
+ylim([min(chain(:,1)),max(chain(:,1))]);
+subplot(3,1,2);plot(start_chain:chlen,chain(start_chain:end,2)); title('CHAIN for K'); xlim([0,chlen]);  
+ylim([min(chain(:,2)),max(chain(:,2))]);
 subplot(3,1,3);plot(start_chain:chlen,chain(start_chain:end,3)); title('CHAIN for F/V'); xlim([0,chlen]);%  ylim([.9,1.2]);
-
+ylim([min(chain(:,3)),max(chain(:,3))]);
+print(gcf,'-dpdf',[fig_save_prefix 'chains.pdf']) 
 
 figure(4); 
+set(gcf,'PaperSize',[5,4]);
+set(gcf,'PaperPosition',[0,0,5,4]);
 subplot(2,2,1);plot(chain(start_chain:end,1),chain(start_chain:end,2),'.'); title('ka vs K'); 
 subplot(2,2,2);plot(chain(start_chain:end,1),chain(start_chain:end,3),'.'); title('ka vs F/V');
 subplot(2,2,3);plot(chain(start_chain:end,2),chain(start_chain:end,3),'.'); title('K vs F/V');
+subplot(2,2,4); axis off;
+text(.1,.5,plot_label,'FontSize',32);
+print(gcf,'-dpdf',[fig_save_prefix 'joint_dists.pdf']) 
+
 
 save(chain_file_name);
 

@@ -16,9 +16,6 @@
 
 \begin{document}
 
-\section{Introdution and Motivation}
-\textcolor{red}{\Large LIA Put your introduction here.}
-
 \section{The Model}
 We model the absorption via the following cascading compartmental decay model.
 
@@ -90,18 +87,17 @@ However the factor $k_a - K$ in the denominator makes this optimization step uns
 
 \subsection{MCMC Parameter Estimate Distributions}  
 
-We use Markov Chain Monte Carlo methods to obtain parameter estimate distributions.  In particular, we adapt codes written by Haario \cite{hario} implementing adaptive Metropolis MCMC parameter estimates.  Initially, our algorithm calculated the pooled SSE via numerical solutions to the ODE which has computationally prohibitive in \texttt{MatLab}.  We modified the calculation of the SSE in the MCMC step to use the exact solution as the stability difficulties in the optimization are no longer relevant. 
+We use Markov Chain Monte Carlo methods to obtain parameter estimate distributions.  In particular, we adapt codes written by Hario \cite{hario} implementing adaptive Metropolis MCMC parameter estimates.  Initially, our algorithm calculated the pooled SSE via numerical solutions to the ODE which has computationally prohibitve in \texttt{MatLab}.  We modified the calculation of the SSE in the MCMC step to use the exact solution as the stability difficulties in the optimization are no longer relevant. 
 
 \subsection{Inference}
 
-Finally, we conduct statistical inference on the parameter distributions obtained on each mouse group to identify any kinetic differences.  This is accomplished by merely forming distributions of the \emph{differences} of the parameters between each group and forming 95\% confidence intervals and observing if 0 is captured within them.  We form these intervals from the MCMC chains, and a subset of the chains to observe any effects of auto-correlation.
+Finally, we conduct statistical inference on the parameter distributions obtained on each mouse group to identify any kinetic differences.  This is accomplished by merely forming distributions of the \emph{differences} of the parameters between each group and forming 95\% confidence intervals and observing if 0 is captured within them.  We form these intervals from the MCMC chains, and a subset of the chains to observe any effects of autocorrelation.
 
 Codes carrying out this procedure can be obtained at \url{https://github.com/kjoyce/math445_project}.
   
 \section{Results} 
-\textcolor{red}{\Large DEREK AND LIA
-Two Things -- When you compile, you may have to compile twice for the figure refs to be created... Or just make sure you also download write\_up.aux, write\_up.log, and write\_up.out and keep the filename write\_up.tex. Please ask if there are tex questions, or I can just compile them if it is a headache, Lia.  Second, I adjusted for autocorrelation as Leonid had suggested.  It amounted to just taking every 10th element in the chains.  I have explained the last bit so don't worry about it, Derek.
-}
+
+When you compile, you may have to compile twice for the figure refs to be created... Or just make sure you also download write\_up.aux, write\_up.log , and write\_up.out and keep the filename write\_up.tex.
 
 \begin{figure}[H]
   \begin{subfigure}[b]{.45\textwidth}
@@ -127,14 +123,14 @@ EXPLAIN \figref{fits} HERE
 EXPLAIN \figref{allfit} HERE
 
 \begin{figure}[H]
-  \begin{subfigure}[t]{.45\textwidth}
+  \begin{subfigure}[b]{.45\textwidth}
     \includegraphics[width=.85\textwidth]{mice_a_chains.pdf} 
-    \caption{Chains for Mice A.}
+    \caption{Chains for each parameter of Mice A.}
     \label{amcmc:chain}
   \end{subfigure}
-  \begin{subfigure}[t]{.45\textwidth}
+  \begin{subfigure}[b]{.45\textwidth}
     \includegraphics[width=\textwidth]{mice_a_joint_dists.pdf}
-    \caption{Joint distributions for Mice A.}
+    \caption{Joint distributions of parameters for Mice A.}
     \label{amcmc:dists}
   \end{subfigure}
   \caption{MCMC runs for Mice A.}
@@ -142,14 +138,14 @@ EXPLAIN \figref{allfit} HERE
 \end{figure}
 
 \begin{figure}[H]
-  \begin{subfigure}[t]{.45\textwidth}
+  \begin{subfigure}[b]{.45\textwidth}
     \includegraphics[width=.85\textwidth]{mice_b_chains.pdf} 
-    \caption{Chains for Mice B.}
+    \caption{Chains for each parameter of Mice A.}
     \label{bmcmc:chain}
   \end{subfigure}
-  \begin{subfigure}[t]{.45\textwidth}
+  \begin{subfigure}[b]{.45\textwidth}
     \includegraphics[width=\textwidth]{mice_b_joint_dists.pdf}
-    \caption{Joint distributions for Mice B.}
+    \caption{Joint distributions of parameters for Mice A.}
     \label{bmcmc:dists}
   \end{subfigure}
   \caption{MCMC runs for Mice B.}
@@ -161,48 +157,21 @@ Explain both \figref{amcmc} and \figref{bmcmc} here.  You can reference subfigur
 \begin{figure}[H]
   \begin{subfigure}[b]{.45\textwidth}
     \includegraphics[width=\textwidth]{drug_abs_diff.pdf} 
-    \caption{Distribution for difference in $F/V$, fraction of absorption. \\
-    The 95\% CI:$[-0.1243,0.0292].$}
-     
+    \caption{Distribution for difference in $F/V$, fraction of absoprtion. \\
+    The 95\% CI:$ [-0.1187,  0.0353]$.}
     \label{absorp}
   \end{subfigure}
   \begin{subfigure}[b]{.45\textwidth}
     \includegraphics[width=\textwidth]{elim_rate_diff.pdf}
     \caption{Distribution for difference in $K$, elimination rate constant.\\
-    The 95\% CI: $[-0.3114,   -0.2278].$}
-      
-    \label{elim}
+    The 95\% CI: $[-0.3101, -0.2296]$}
+    \label{absorp}
   \end{subfigure}
-  \caption{ Parameter estimate distributions. }
-
 \end{figure}
-
-EXPLAIN \figref{absorp} and \figref{elim}
-
-\begin{figure}[H]
-  \begin{subfigure}[b]{.45\textwidth}
-    \includegraphics[width=\textwidth]{auto_cor_FV.pdf}
-    \caption{Distribution for difference in $F/V$, autocorrelation corrected. \\
-    The 95\% CI:$ [-0.1228,0.0284]$.}
-     
-    \label{autoabsorp}
-  \end{subfigure}
-  \begin{subfigure}[b]{.45\textwidth}
-    \includegraphics[width=\textwidth]{auto_cor_K.pdf}
-    \caption{Distribution for difference in $K$, autocorrelation corrected.\\
-    The 95\% CI: $[-0.3107,-0.2278]$.}
-    
-    \label{autoelim}
-  \end{subfigure}
-\caption{ Every 10th chain element removed correcting for autocorrelation. }
-\label{autocor}
-\end{figure}
-
-\figref{autocor} displays the results of adjusting for auto-correlation. We have selected every 10th element of the distribution chain to correct for correlation between successive elements in the Markov process.  Due to the size of the chain, however, the effects of this autocorrelation are negligable as can be seen from the above results.
 
 \begin{thebibliography}{[99]}
-\bibitem{hario} Haario H., MCMC for (Biological) Modeling, Lappeentranta University of Technology, Finland. 2012
-\bibitem{notes} Graham J. and Kalechev L.  Lecture Notes for Statistical, Dynamical, and Computational Modeling. University of Montana. 2012.
+\bibitem{hario} Hario H., MCMC for (Biological) Modelling, Lappeentranta University of Technology, Finland. 2012
+\bibitem{notes} Graham J. and Kalechev L.  LEcture Notes fof Statistical, Dynamical, and Computational Modeling. University of Montana. 2012.
 \end{thebibliography}
 \end{document}
 

@@ -51,12 +51,12 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Why study drug kinetics in genetically modified mice?}
+\frametitle{Why study drug kinetics in gentically modified mice?}
 \begin{itemize}
   \item Kinetics in humans differ on body weight, gender, and race
   \item Important to make sure drug doses work properly no matter such variables
   \item Unethical to do clinical trials in humans before know risks
-  \item Can manipulate mice genes to mimic physiological behaviors in humans
+  \item Can manipulate mice genes to mimic phisological behaviors in humans
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,9 +64,9 @@
 \frametitle{The study}
 \begin{itemize}
 \item 10 genetically modified mice and 10 normal mice
-\item Receive intramuscular injections of drug
-\item Initial drug doses held constant by the same $\mu$gram/kg of body weight
-\item Drugs administered and concentration checked t $t = 1, 2, 4, 8$ hr
+\item Recieve intramuscular injections of drug
+\item Inital drug doses held constant by the same $\mu$gram/kg of body weight
+\item Drugs administered over $t = 1, 2, 4, 8$ hr
 \item We look at two compartments: intramuscular and cell plasma/blood
 \item In particular we study drug absorption and drug elimination 
 \end{itemize}
@@ -95,7 +95,7 @@ A cascading system:
 \end{center}
 
   \begin{align*}
-    \frac{dX_a}{dt} &= -k_a X_a(t), &X_a(0) = FX_0\\
+    \frac{dX_a}{dt} &= -k_a X_a(t), &X_a(0) = F\\
     \frac{dX}{dt}   &= k_a X_a(t) - K\,X(t), &X(0) = 0.\\
   \end{align*}
 \pause
@@ -113,9 +113,9 @@ $$
 \alert{Will the same drug administered to the normal and genetically modified mice behave kinetically the same? }
 \begin{itemize}
 \item We answer this question by seeing if both mice populations can be described by the same equation. 
-\item We need to identify the parameters: $K, K_{a}, \frac{F}{V}$
+\item We need to identify the paramters: $K, K_{a}, \frac{F}{V}$
 \item $\frac{F}{V}$ should be the same for any two mice from the same population since they will have about equal weight and ideally equal kinetics. 
-\item Goal is to derive system of equations to fit data and then analyze parameters using statistics.  
+\item Goal is to derive system of equations to fit data and then analyze paramters using statistics.  
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -127,7 +127,7 @@ $$
 \begin{itemize}
 \item Fit the model to the two groups of ten mice one with genetic modification and and the other without modification.
 \pause
-\item Use MCMC to get parameter distributions of  $K, k_{a}, \frac{F}{V}$ for each mice population
+\item Use MCMC to get paramter distributions of  $K, K_{a}, \frac{F}{V}$ for each mice population
 \pause
 \item Test the difference between drug absorption coefficient for each mice population based upon the parameter distributions we obtained
 \end{itemize}
@@ -172,8 +172,8 @@ mouse10b 18.51092 10.74009 4.077918 0.593429     \alert<2->{    29.48989}
   \frametitle{Modifying Sum Squared Error}
   \begin{itemize}
     \item When fitting the data in standard way one needs only calculate the SSE for \alert{one} model fit.
-    \item Here we must fit the model to our data \alert{10 times} for each initial condition.
-    \item Then we pool the SSE from each model fit. We find parameters that minimize
+    \item Here we must fit the model to our data \alert{10 times} for each intial condition.
+    \item Then we pool the SSE from each model fit. We find parameters that mimimize
   \end{itemize}
   $$
     SSE = \sum_{i=1}^{10} \sum_{j=1}^4 \big(C(t_j,y_{0i}|\hat k_a,\hat K,\widehat{F/V},) - Cobs_{i,j}\big)^2
@@ -185,15 +185,14 @@ mouse10b 18.51092 10.74009 4.077918 0.593429     \alert<2->{    29.48989}
   Recall the exact solution:
   $$
   X_a(t) = \alert<3->{F}X_0 \big( k_ae^{-k_at} \big), \quad
-  X(t) = \frac{k_a F X_0}{\alert<2->{k_a - K}}\big( e^{-Kt} - e^{-k_a t}\big),
+  X(t) = \frac{k_a F X_0}{\alert<2->{k_a - K}}\big( e^{-Kt} - e^{-k_a t}\big).
   $$
-$$C(t) = \frac{X(t)}{V} = \frac{F}{V} \cdot X_0 \cdot \frac{k_a}{k_a -K}\big( e^{-Kt} - e^{-k_a t}\big).$$
 \pause
 \begin{itemize}
 \item The factor \alert{$k_a - K$} in the denominator can be an issue when using
 numerical solvers that minimize the sum squared error.
 \pause
-\item Instead we optimize the numerical solution to the differential equation. This also gets around having to solve explicitly for $V$, the average volume of blood of the mice and $F$, the total fraction of the drug absorbed. 
+\item Instead we optimize the numerical solution to the differential equation. This also gets around having to solve explicitely for $V$, the average volume of blood of the mice and $F$, the total fraction of the drug absorbed. 
 \pause
 \item Note that this will take about 10 times as long as a standard differential equation fit since each calculation of the SSE involves 10 model fits.
 \end{itemize}
