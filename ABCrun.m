@@ -11,16 +11,16 @@
 %clear all; close all; clc; 
 
 %%%%%%%%%%%% CHANGE THESE PARAMETERS %%%%%%%%%%%%%%%%
-nsimu = 5000;
-the_mice = mice.a;
+load mice_data_struct;
+nsimu = 15000;
+%the_mice = mice.a;
 the_mice = mice.b;
-%chain_file_name = 'mice_a_1-5000_exact-sol.mat';
-chain_file_name = 'mice_b_1-5000_exact-sol.mat';
-first_run = 0;  % change to 0 if you are continuing from previous MCMC
+%chain_file_name = 'mice_a_1-15000_exact-sol.mat';
+chain_file_name = 'mice_b_1-15000_exact-sol.mat';
+first_run = 1;  % change to 0 if you are continuing from previous MCMC
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 if (first_run)
-load mice_data_struct;
   % calling fminsearch
   theta0=[10 1 1];
   [thopt,ssopt]=fminsearch(@ABCsumss,theta0,[],the_mice);
@@ -31,21 +31,24 @@ load mice_data_struct;
   hold on;
   for i=1:10
       ymod=ABCmodel(t,thopt,the_mice(i).init);
+    %  plot(t,ymod(:,1),':c');
+    %  plot(t,ymod(:,2),':r');
       plot(t,ymod);
       plot(the_mice(i).xdata,the_mice(i).ydata,'ko');
       xlabel('time'); ylabel('Drug Concentration');
-      legend('Xa compartment','X Compartment');
   end
+%      legend('Xa compartment','X Compartment');
   hold off;
 
   figure(5);
   idx = randperm(10); % plot nine random mice
   for i=1:9
-      ymod=ABCexact(t,thopt,the_mice(idx(i)).init);
+      ymod=ABCmodel(t,thopt,the_mice(idx(i)).init);
       subplot(3,3,i);
       hold on;
       plot(t,ymod);
       plot(the_mice(i).xdata,the_mice(idx(i)).ydata,'ko');
+      ylim([-1,40]);
       hold off;
       xlabel('time'); ylabel('Drug Concentration');
   end
@@ -99,15 +102,15 @@ accept = 1-rej./nsimu;                  % acceptance rate
 
 %%%%some plots: 
 figure(3)
-start_chain = 100;
+start_chain = 1;
 chlen = length(chain);
-subplot(3,1,1);plot(start_chain:chlen,chain(start_chain:end,1)); title('CHAIN for ka');
-subplot(3,1,2);plot(start_chain:chlen,chain(start_chain:end,2)); title('CHAIN for K');
-subplot(3,1,3);plot(start_chain:chlen,chain(start_chain:end,3)); title('CHAIN for F/V');
+subplot(3,1,1);plot(start_chain:chlen,chain(start_chain:end,1)); title('CHAIN for ka'); xlim([0,chlen]);
+subplot(3,1,2);plot(start_chain:chlen,chain(start_chain:end,2)); title('CHAIN for K'); xlim([0,chlen]); ylim([.48,.58]);
+subplot(3,1,3);plot(start_chain:chlen,chain(start_chain:end,3)); title('CHAIN for F/V'); xlim([0,chlen]); ylim([.9,1.2]);
 
 
 figure(4); 
-subplot(2,2,1);plot(chain(start_chain:end,1),chain(start_chain:end,2),'.'); title('ka vs K');
+subplot(2,2,1);plot(chain(start_chain:end,1),chain(start_chain:end,2),'.'); title('ka vs K'); 
 subplot(2,2,2);plot(chain(start_chain:end,1),chain(start_chain:end,3),'.'); title('ka vs F/V');
 subplot(2,2,3);plot(chain(start_chain:end,2),chain(start_chain:end,3),'.'); title('K vs F/V');
 
