@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.10pt}
+\beamer@sectionintoc {1}{Motivation and Backgroud}{2}{0}{1}
+\beamer@sectionintoc {2}{Method and Strategy}{8}{0}{2}
+\beamer@sectionintoc {3}{Results and Conclusion}{21}{0}{3}
+\beamer@sectionintoc {4}{Conclusion}{26}{0}{4}

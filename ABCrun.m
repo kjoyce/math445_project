@@ -13,10 +13,10 @@
 %%%%%%%%%%%% CHANGE THESE PARAMETERS %%%%%%%%%%%%%%%%
 load mice_data_struct;
 nsimu = 15000;
-%the_mice = mice.a;
-the_mice = mice.b;
-%chain_file_name = 'mice_a_1-15000_exact-sol.mat';
-chain_file_name = 'mice_b_1-15000_exact-sol.mat';
+the_mice = mice.a;
+%the_mice = mice.b;
+chain_file_name = 'mice_a_1-15000_exact-sol.mat';
+%chain_file_name = 'mice_b_1-15000_exact-sol-2.mat';
 first_run = 1;  % change to 0 if you are continuing from previous MCMC
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
@@ -105,8 +105,8 @@ figure(3)
 start_chain = 1;
 chlen = length(chain);
 subplot(3,1,1);plot(start_chain:chlen,chain(start_chain:end,1)); title('CHAIN for ka'); xlim([0,chlen]);
-subplot(3,1,2);plot(start_chain:chlen,chain(start_chain:end,2)); title('CHAIN for K'); xlim([0,chlen]); ylim([.48,.58]);
-subplot(3,1,3);plot(start_chain:chlen,chain(start_chain:end,3)); title('CHAIN for F/V'); xlim([0,chlen]); ylim([.9,1.2]);
+subplot(3,1,2);plot(start_chain:chlen,chain(start_chain:end,2)); title('CHAIN for K'); xlim([0,chlen]); % ylim([.48,.58]);
+subplot(3,1,3);plot(start_chain:chlen,chain(start_chain:end,3)); title('CHAIN for F/V'); xlim([0,chlen]);%  ylim([.9,1.2]);
 
 
 figure(4); 
