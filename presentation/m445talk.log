@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  12 DEC 2012 08:09
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  12 DEC 2012 19:45
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -933,30 +933,17 @@ Overfull \vbox (11.28023pt too high) detected at line 226
 
 [24
 
- <./all_fitted.pdf>]
-
-pdfTeX warning: pdflatex (file ./mice_b_chains.pdf): PDF inclusion: found PDF v
-ersion <1.5>, but at most version <1.4> allowed
-<mice_b_chains.pdf, id=711, 383.51282pt x 297.26726pt>
+ <./all_fitted.pdf>] <mice_b_chains.pdf, id=711, 361.35pt x 289.08pt>
 File: mice_b_chains.pdf Graphic file (type pdf)
- <use mice_b_chains.pdf>
 
-pdfTeX warning: pdflatex (file ./mice_a_chains.pdf): PDF inclusion: found PDF v
-ersion <1.5>, but at most version <1.4> allowed
-<mice_a_chains.pdf, id=713, 383.51282pt x 297.26726pt>
+<use mice_b_chains.pdf> <mice_a_chains.pdf, id=712, 361.35pt x 289.08pt>
 File: mice_a_chains.pdf Graphic file (type pdf)
- <use mice_a_chains.pdf>
 
-pdfTeX warning: pdflatex (file ./mice_a_joint_dists.pdf): PDF inclusion: found 
-PDF version <1.5>, but at most version <1.4> allowed
-<mice_a_joint_dists.pdf, id=715, 376.46648pt x 300.64319pt>
+<use mice_a_chains.pdf> <mice_a_joint_dists.pdf, id=713, 361.35pt x 289.08pt>
 File: mice_a_joint_dists.pdf Graphic file (type pdf)
 
 <use mice_a_joint_dists.pdf>
-
-pdfTeX warning: pdflatex (file ./mice_b_joint_dists.pdf): PDF inclusion: found 
-PDF version <1.5>, but at most version <1.4> allowed
-<mice_b_joint_dists.pdf, id=717, 377.89182pt x 299.8402pt>
+<mice_b_joint_dists.pdf, id=714, 361.35pt x 289.08pt>
 File: mice_b_joint_dists.pdf Graphic file (type pdf)
 
 <use mice_b_joint_dists.pdf> [25
@@ -968,7 +955,7 @@ _b_joint_dists.pdf>] (./m445talk.toc) [26
 
 pdfTeX warning: pdflatex (file ./drug_abs_diff.pdf): PDF inclusion: found PDF v
 ersion <1.5>, but at most version <1.4> allowed
-<drug_abs_diff.pdf, id=877, 376.9583pt x 299.87032pt>
+<drug_abs_diff.pdf, id=741, 376.9583pt x 299.87032pt>
 File: drug_abs_diff.pdf Graphic file (type pdf)
  <use drug_abs_diff.pdf>
 Overfull \hbox (8.6078pt too wide) in paragraph at lines 256--256
@@ -996,7 +983,7 @@ mr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 1187\OML/cmm/m/it/10.95 ;
 
 pdfTeX warning: pdflatex (file ./elim_rate_diff.pdf): PDF inclusion: found PDF 
 version <1.5>, but at most version <1.4> allowed
-<elim_rate_diff.pdf, id=905, 377.19919pt x 299.87032pt>
+<elim_rate_diff.pdf, id=769, 377.19919pt x 299.87032pt>
 File: elim_rate_diff.pdf Graphic file (type pdf)
 
 <use elim_rate_diff.pdf> [29
@@ -1005,6 +992,8 @@ File: elim_rate_diff.pdf Graphic file (type pdf)
 File: elim_rate_diff.pdf Graphic file (type pdf)
  <use elim_rate_diff.pdf>
 [30
+
+] [31
 
 ]
 \tf@nav=\write6
@@ -1023,10 +1012,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 16939 strings out of 495061
- 322372 string characters out of 1182621
- 389027 words of memory out of 3000000
- 19601 multiletter control sequences out of 15000+50000
+ 16943 strings out of 495061
+ 322407 string characters out of 1182621
+ 389028 words of memory out of 3000000
+ 19603 multiletter control sequences out of 15000+50000
  11137 words of font info for 43 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  49i,11n,62p,418b,656s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1043,9 +1032,9 @@ ype1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/
 amsfonts/cm/cmtt8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/sym
 bols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/m
 sbm10.pfb>
-Output written on m445talk.pdf (30 pages, 889628 bytes).
+Output written on m445talk.pdf (31 pages, 2135679 bytes).
 PDF statistics:
- 993 PDF objects out of 1000 (max. 8388607)
- 65 named destinations out of 1000 (max. 500000)
+ 864 PDF objects out of 1000 (max. 8388607)
+ 67 named destinations out of 1000 (max. 500000)
  110 words of extra memory for PDF output out of 10000 (max. 10000000)
 
